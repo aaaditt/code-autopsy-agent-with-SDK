@@ -6,9 +6,9 @@ Paste any public GitHub repo URL → get a full **Architecture Map**, **Bug Repo
 
 Built for **Google Gen AI Academy APAC Edition 2025 — Track 1: Build and Deploy AI Agents**.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-code--autopsy--agent.vercel.app-blue?style=for-the-badge)](https://code-autopsy-agent.vercel.app)
 [![API](https://img.shields.io/badge/API-Cloud%20Run-4285F4?style=for-the-badge&logo=google-cloud)](https://code-autopsy-api-193200817081.us-central1.run.app/health)
 [![ADK](https://img.shields.io/badge/Powered%20by-Google%20ADK-orange?style=for-the-badge)](https://google.github.io/adk-docs/)
+[![LinkedIn](https://img.shields.io/badge/Request%20Access-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/aadit-chandra)
 
 ---
 
