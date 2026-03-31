@@ -8,12 +8,13 @@ import requests
 import base64
 from dotenv import load_dotenv
 
+load_dotenv()  # local dev only; does not override Cloud Run env vars
+
 from google.adk.agents import LlmAgent
 from google.adk.agents.sequential_agent import SequentialAgent
 
-load_dotenv()
-
-GEMINI_MODEL = "gemini-2.0-flash-001"
+USE_VERTEXAI = os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("1", "true")
+GEMINI_MODEL = "gemini-2.0-flash-001" if USE_VERTEXAI else "gemini-2.5-flash"
 
 
 # ---------------------------------------------------------------------------
