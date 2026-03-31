@@ -13,7 +13,7 @@ from google.adk.agents.sequential_agent import SequentialAgent
 
 load_dotenv()
 
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-2.0-flash-001"
 
 
 # ---------------------------------------------------------------------------

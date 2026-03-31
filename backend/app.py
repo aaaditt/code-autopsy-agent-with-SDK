@@ -38,30 +38,22 @@ def make_runner() -> Runner:
 
 async def run_pipeline(repo_url: str) -> dict:
     """Run the full ADK pipeline for a given repo URL. Returns all reports."""
-    runner = make_runner()
-    session_service = runner.session_service
 
-    # Create a session and pre-populate state with the fetched repo data
-    session = await session_service.create_session(
-        app_name=APP_NAME,
-        user_id="user",
-    )
-
-    # Fetch GitHub data first (as a tool call outside the agent so all agents share it)
+    # Fetch GitHub data first (before creating session)
     repo_data = fetch_github_repo(repo_url)
-
     if "error" in repo_data:
         return {"error": repo_data["error"]}
 
-    # Inject repo_data into session state so all agents can read it
-    await session_service.create_session(
+    runner = make_runner()
+    session_service = runner.session_service
+
+    # Create session with state pre-populated in one call
+    session = await session_service.create_session(
         app_name=APP_NAME,
         user_id="user",
-        session_id=session.id,
         state={"repo_data": json.dumps(repo_data, indent=2)},
     )
 
-    # Re-fetch the session with state (create_session with existing id updates it)
     user_message = genai_types.Content(
         role="user",
         parts=[genai_types.Part(text=f"Analyze this GitHub repository: {repo_url}")],
